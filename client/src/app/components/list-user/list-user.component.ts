@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/shared/user.service';
-import { User } from '../add-user/user-model';
+import { ListUser } from '../list-user/ListUser';
 import { Router } from '@angular/router';
+import { User } from '../add-user/user-model';
 
 @Component({
   selector: 'app-list-user',
@@ -12,12 +13,12 @@ import { Router } from '@angular/router';
 export class ListUserComponent implements OnInit {
   users: any = [];
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit() {
-    this.userService.listUsers().subscribe((res) => {
+    this.userService.listUsers().subscribe(res => {
       this.users = res;
-      console.log(res);
+      console.log(this.users);
     });
   }
 
@@ -26,12 +27,11 @@ export class ListUserComponent implements OnInit {
       this.users = res;
       console.log(res);
       this.router.navigate(['user/edit', id]);
-    })
+    });
   }
 
   onDelete(id: String) {
     this.userService.deleteUser(id).subscribe(res => {
-      this.users = res;
       this.ngOnInit();
       console.log(res);
     });

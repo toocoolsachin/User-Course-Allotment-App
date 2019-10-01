@@ -10,16 +10,19 @@ import { Router } from '@angular/router';
   providers: [UserService]
 })
 export class AddUserComponent implements OnInit {
-  user = new User('', '', '', '', '');
+  user: User[];
 
   constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit() {}
 
-  onSubmit(){
-    this.userService.addUser(this.user).subscribe(res => {
+  userModel = new User('', '', '', '', '');
+
+  onSubmit() {
+    this.userService.addUser(this.userModel).subscribe(res => {
+      this.user = res;
       console.log(`Successfully Added: ${res}`);
       this.router.navigate(['user/list']);
-    })
+    });
   }
 }

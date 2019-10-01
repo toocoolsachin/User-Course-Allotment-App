@@ -5,5 +5,5 @@ export class User {
     public email: string,
     public collegeName: string,
     public graduationYear: string
-  ){}
+  ) {}
 }

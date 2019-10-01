@@ -1,3 +1,7 @@
 nav ul li a {
   color: #fff;
 }
+
+.dropdown-menu > a:hover {
+  background-color: blue;
+}

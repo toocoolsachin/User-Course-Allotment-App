@@ -1,33 +1,32 @@
 import { Injectable } from '@angular/core';
 import { User } from '../components/add-user/user-model';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  url = 'http://localhost:3000/api/users';
 
-  url = 'http://localhost:3000/api/users'
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  addUser(user: User){
+  addUser(user: User) {
     return this.http.post<any>(`${this.url}`, user);
   }
 
-  listUsers(){
+  listUsers() {
     return this.http.get(`${this.url}`);
   }
 
-  editUser(id){
+  editUser(id) {
     return this.http.get(`${this.url}/edit/${id}`);
   }
 
-  updateUser(user: User, id){
-    return this.http.put<User>(`${this.url}/update/${id}`, user);
+  updateUser(user: User, id: string) {
+    return this.http.put(`${this.url}/update/${id}`, user);
   }
 
-  deleteUser(id){
-    return this.http.delete<User>(`${this.url}/delete/${id}`);
+  deleteUser(id) {
+    return this.http.delete(`${this.url}/delete/${id}`);
   }
 }

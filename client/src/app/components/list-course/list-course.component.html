@@ -1,1 +1,36 @@
-<p>list-course works!</p>
+<div class="container">
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <th>Course Name</th>
+      <th>Course Duration</th>
+      <th>Course Fees</th>
+      <th>Course Starting Date</th>
+      <th colspan="2">Actions</th>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let course of courses">
+        <td>{{ course.courseName }}</td>
+        <td>{{ course.courseDuration }}</td>
+        <td>{{ course.courseFees }}</td>
+        <td>{{ course.courseStartingDate }}</td>
+        <td>
+          <a
+            [routerLink]="['/course/edit', course._id]"
+            class="btn btn-primary"
+            (click)="onEdit(course._id)"
+            >Edit</a
+          >
+        </td>
+        <td>
+          <a
+            [routerLink]=""
+            class="btn btn-danger"
+            (click)="onDelete(course._id)"
+            >Delete</a
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

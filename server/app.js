@@ -7,6 +7,7 @@ const dotenv = require('dotenv');
 
 // Import routers
 const userRoute = require('./routes/userRoutes');
+const courseRoute = require('./routes/courseRoutes');
 
 // dotenv config
 dotenv.config();
@@ -33,6 +34,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Routes Middle Wares
 app.use('/api/users', userRoute);
+app.use('/api/courses', courseRoute);
 
 //Default route to check Api
 app.get('/', (req, res) => {

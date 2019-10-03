@@ -12,6 +12,7 @@ import { EditCourseComponent } from './components/edit-course/edit-course.compon
 
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './shared/user.service';
+import { CourseService } from './shared/course.service';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -24,13 +25,8 @@ import { FormsModule } from '@angular/forms';
     ListCourseComponent,
     EditCourseComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule
-  ],
-  providers: [UserService],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  providers: [UserService, CourseService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

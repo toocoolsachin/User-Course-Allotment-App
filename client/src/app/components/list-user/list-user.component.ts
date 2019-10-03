@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/shared/user.service';
-import { ListUser } from '../list-user/ListUser';
 import { Router } from '@angular/router';
 import { User } from '../add-user/user-model';
 

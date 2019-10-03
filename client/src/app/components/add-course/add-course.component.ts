@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CourseService } from 'src/app/shared/course.service';
+import { Course } from './course-model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-course',
@@ -6,10 +9,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-course.component.css']
 })
 export class AddCourseComponent implements OnInit {
+  courses: Course[];
+  courseModel = new Course('', '', '', '');
+  constructor(private courseService: CourseService, private router: Router) {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  onSubmit() {
+    this.courseService.addCourse(this.courseModel).subscribe(res => {
+      this.courses = res;
+      this.router.navigate(['course/list']);
+      console.log(res);
+    });
   }
-
 }
